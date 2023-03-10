@@ -1,0 +1,41 @@
+body{
+  background-image: radial-gradient(blue, black);
+  background-repeat: no-repeat;
+  height: 100vh;
+  color: greenyellow;
+  font-family: sans-serif;
+}
+
+h1{
+  margin: 50px auto;
+  width: fit-content;
+  text-decoration: underline;
+}
+
+form{
+  border-radius: 10px;
+  background-color: rgba(0, 0, 0, 0.459);
+  display: grid;
+  grid-template-columns: 30px auto;
+  width: fit-content;
+  padding: 20px;
+  /* margin: 0 auto; */
+  font-size: 25px;
+  gap: 10px 0px;
+}
+form input[type="radio"]{
+  cursor: pointer;
+  width: 20px;
+}
+form input[type="submit"]{
+  width: fit-content;
+  padding: 5px 25px;
+  border-radius: 5px;
+  margin: 0 50px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.5s;
+}
+form input[type="submit"]:hover{
+  color: green;
+}
