@@ -1,6 +1,7 @@
 body{
   background-image: radial-gradient(blue, black);
   background-repeat: no-repeat;
+  background-attachment: fixed;
   height: 100vh;
   color: greenyellow;
   font-family: sans-serif;
@@ -16,12 +17,12 @@ form{
   border-radius: 10px;
   background-color: rgba(0, 0, 0, 0.459);
   display: grid;
-  grid-template-columns: 30px auto;
+  grid-template-columns: auto auto;
   width: fit-content;
   padding: 20px;
-  /* margin: 0 auto; */
   font-size: 25px;
   gap: 10px 0px;
+  margin: 0 auto;
 }
 form input[type="radio"]{
   cursor: pointer;
@@ -38,4 +39,7 @@ form input[type="submit"]{
 }
 form input[type="submit"]:hover{
   color: green;
+}
+.escolha{
+  grid-template-columns: 30px auto;
 }

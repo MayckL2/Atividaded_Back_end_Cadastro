@@ -4,6 +4,14 @@
 
   $cpf = $_POST['cpf'];
   $nome = $_POST['nome'];
+
+  if($_POST['senha1'] != $_POST['senha2']){
+    $_SESSION['msg']= "Senhas devem ser iguais";
+    header("location: cad_cpf.php");
+  }
+
+  $senha = md5($_POST['senha1']);
+  $email = $_POST['email'];
   $nums = [10, 9, 8, 7, 6, 5, 4, 3, 2];
 
   if(strlen($cpf) == 0 and strlen($cpf) > 11){
@@ -38,15 +46,21 @@
 
     
     if($cpf[9] == $ultima1 and $cpf[10] == $ultima2){
-      $_SESSION['msg']= "<p style='color: green'>CPF VALIDO!</p>";
-      $_SESSION['cpf']= $cpf;
-      $comandoSql = "insert into cpf (id, nome, cpf) value (default, '$nome', '$cpf')";
+      $comandoSql = "insert into cpf (id, nome, cpf, senha, email, criado) value (default, '$nome', '$cpf', '$senha', '$email', now())";
       $insereUser = mysqli_query($con, $comandoSql);
-      header("location: result_cpf.php");
+
+      if(mysqli_affected_rows($con)){
+        $_SESSION['msg']= "<p style='color: green'>CPF VALIDO!</p>";
+        $_SESSION['cpf']= $cpf;
+        header("location: result_cpf.php");
+      }else{
+        $_SESSION['msg'] = "<p style='color: red'>CPF INVALIDO! <br> erro ao salvar no banco de dados</p>";
+        $_SESSION['cpf']= $cpf;
+        header("location: cad_cpf.php");
+      }
     }else{
       $_SESSION['msg'] = "<p style='color: red'>CPF INVALIDO! <br> numeraçao errada</p>";
       $_SESSION['cpf']= $cpf;
-      // $_SESSION['cpf']= $cpf;
       header("location: cad_cpf.php");
     }
     

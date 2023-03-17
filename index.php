@@ -19,9 +19,18 @@ if (isset($_POST['op'])) {
 </head>
 
 <body>
-  <h1>CADASTRAR</h1>
 
-  <form action="#" method="post">
+<?php
+  session_start();
+
+  if(!empty($_SESSION['msg'])){
+    echo $_SESSION['msg'];
+    unset($_SESSION['msg']);
+  }
+?>
+<h1>CADASTRAR</h1>
+
+  <form action="#" method="post" class="escolha">
     <input type="radio" id="pessoafisica" name="op" value="cpf">
     <label for="pessoafisica">Pessoa fisica</label>
     <input type="radio" id="pessoajuridica" name="op" value="cnpj">
